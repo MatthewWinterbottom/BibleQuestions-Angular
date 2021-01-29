@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
+
 export class SignupComponent implements OnInit {
 
   constructor() { }
@@ -12,4 +13,28 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     
   }
+
+  model = new SignUpModel("", "", "", "", "");
+
+  submitted = false;
+
+  onSubmit() { this.submitted = true; }
+  /**
+   * signUp
+   */
+  public signUp() : Boolean {
+    return true;
+  }
+}
+
+export class SignUpModel {
+
+  constructor(
+    public firstName: string,
+    public surname: string,
+    public email: string,
+    public password: string,
+    public confirmPassword: string
+  ){ }
+
 }
