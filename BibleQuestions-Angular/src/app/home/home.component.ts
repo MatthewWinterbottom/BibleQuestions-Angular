@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';  
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ApiService } from '../api.service';
 
 @Component({  
@@ -7,12 +8,20 @@ import { ApiService } from '../api.service';
 	styleUrls: ['./home.component.css']  
 })  
 export class HomeComponent implements OnInit {
-	products = [];
+	
+	products: any[];
+	counter: number = 0;
+
+	AddToCounter() {
+		this.counter = this.counter + 1;
+	}
+
 	constructor(private apiService: ApiService) { }
+
 	ngOnInit() {
-		this.apiService.get().subscribe((data: any[])=>{  
-			console.log(data);  
-			this.products = data;  
-		})  
+		this.apiService.sendGetRequest().subscribe((data: any[])=>{  
+			this.products = data;
+			sessionStorage
+		})
 	}
 }

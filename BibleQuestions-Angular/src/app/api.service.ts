@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';  
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
 
 @Injectable({  
 	providedIn: 'root'  
@@ -9,7 +10,22 @@ export class ApiService {
 	private SERVER_URL = "http://localhost:3000/products";
 	constructor(private httpClient: HttpClient) { }
 
-	public get(){  
+	handleError(error: HttpErrorResponse) {
+		let errorMessage: string = "Uknown error!";
+
+		if(error.error instanceof ErrorEvent) {
+			// Client side errors
+			errorMessage = `Error: ${error.error.message}`;
+		} else {
+			// Server-side errors
+			errorMessage = `Error code: ${error.status}\nMessage: ${error.message}`;
+		}
+
+		window.alert(errorMessage);
+		return throwError(errorMessage);
+	}
+
+	public sendGetRequest(){
 		return this.httpClient.get(this.SERVER_URL);  
 	}  
 }
