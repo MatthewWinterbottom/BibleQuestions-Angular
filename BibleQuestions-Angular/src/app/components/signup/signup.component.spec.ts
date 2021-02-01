@@ -32,16 +32,16 @@ describe('SignupComponent', () => {
   });
 
   it('the api post response should return true', () => {
-    var response = component.signUp();
+    const response = component.signUp();
     expect(response).toBeTruthy();
   });
 
   it('should have form fields', () => {
-    var firstName = fixture.nativeElement.querySelector('[name="firstName"][type="text"]');
-    var surname = fixture.nativeElement.querySelector('[name="surname"][type="text"]');
-    var email = fixture.nativeElement.querySelector('[name="email"][type="email"]');
-    var password = fixture.nativeElement.querySelector('[name="password"][type="password"]');
-    var confirmPassword = fixture.nativeElement.querySelector('[name="confirmPassword"][type="password"]');
+    const firstName = fixture.nativeElement.querySelector('[name="firstName"][type="text"]');
+    const surname = fixture.nativeElement.querySelector('[name="surname"][type="text"]');
+    const email = fixture.nativeElement.querySelector('[name="email"][type="email"]');
+    const password = fixture.nativeElement.querySelector('[name="password"][type="password"]');
+    const confirmPassword = fixture.nativeElement.querySelector('[name="confirmPassword"][type="password"]');
 
     expect(firstName).toBeTruthy();
     expect(surname).toBeTruthy();
